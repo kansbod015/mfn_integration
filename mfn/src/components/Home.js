@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import { NEWS_ITEMS_URL } from './API_URL'
+import { NEWS_ITEMS_URL } from './API_URL';
+import SingleNews from './SingleNews';
 
 export const Home = () => {
   const [ newsItemsList, setNewsItemsList ] = useState([]);
@@ -16,8 +17,12 @@ export const Home = () => {
   }, [])
 
   return(
-    <div>
-      <h1>Hello World</h1>
+    <div className="news-list">
+      {newsItemsList.map(news => {
+        return (
+          <SingleNews {...news} />
+        )
+      })}
     </div>
   )
 };
